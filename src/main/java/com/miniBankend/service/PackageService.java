@@ -1,6 +1,6 @@
 package com.miniBankend.service;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
+
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.miniBankend.model.Packages;
@@ -48,7 +48,7 @@ public class PackageService {
             return -1;
         }
     }
-    public List<Packages> getAllPackages() throws JsonProcessingException {
+    public List<Packages> getAllPackages() {
         try{
             String packageList = packageRepository.getAll();
             log.info("PackageService : get list package success");

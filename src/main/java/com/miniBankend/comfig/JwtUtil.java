@@ -66,11 +66,4 @@ public class JwtUtil {
         return listToken;
 
     }
-
-//    @CachePut(cacheNames ={"JWT"})
-//    public  Map<String,String> deleteToken(String token,String key){
-//        listToken.get(token).remove(key);
-//        return listToken.get(token);
-//
-//    }
 }
