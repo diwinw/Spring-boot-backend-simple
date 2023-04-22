@@ -5,6 +5,11 @@
 - Java 8 or higher
 - Postgres database
 
+### Running docker file
+Go to resource path and run with the command
+```
+docker-compose up -d
+```
 
 
 ### Running the Application
@@ -52,11 +57,6 @@ The coverage report will be available at
 target/site/jacoco/index.html
 ```
 
-### Running docker file
-Go tp resource path and run with the command
-```
-docker-compose up -d
-```
 
 
 ### Built With
