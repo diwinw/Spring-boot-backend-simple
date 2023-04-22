@@ -17,7 +17,7 @@ public class PackageRepository{
 
 
     public int save(Packages packages) {
-        String sql = "INSERT INTO packages (package_name, price_per_unit)" +
+        String sql = "INSERT INTO stock.packages (package_name, price_per_unit)" +
                 "VALUES('"+packages.getPackage_name()+"',"+packages.getPrice_per_unit()+");";
         HashMap<String,Object> params = new HashMap<>();
         return namedParameterJdbcTemplate.update(sql,params);
@@ -61,13 +61,21 @@ public class PackageRepository{
             sql += "AND package_id = '"+packageId+"' ";
         }
         if(packageName!= null){
-            sql +="AND package_name LIKE '"+packageName+"' ";
+            sql +="AND package_name LIKE '%"+packageName+"%' ";
         }
-        if(minPrice>0 && minPrice < maxPrice){
-            sql +="AND price_per_unit > "+minPrice+" ";
+        if(minPrice>0 ){
+            if(maxPrice > 0 && minPrice < maxPrice){
+                sql +="AND price_per_unit > "+minPrice+" ";
+            }else if (maxPrice < 1){
+                sql +="AND price_per_unit > "+minPrice+" ";
+            }
         }
-        if(maxPrice>0 && minPrice < maxPrice){
-            sql +="AND price_per_unit < "+maxPrice+" " ;
+        if(maxPrice>0 ){
+            if(minPrice>0 && minPrice < maxPrice ){
+                sql +="AND price_per_unit < "+maxPrice+" " ;
+            }else if(minPrice < 1){
+                sql +="AND price_per_unit < "+maxPrice+" " ;
+            }
         }
         if(startDate!= null){
             sql +="AND create_date >= '"+startDate+"' " ;

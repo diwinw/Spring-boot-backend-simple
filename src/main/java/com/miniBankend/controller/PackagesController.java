@@ -15,6 +15,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/packages")
+@CrossOrigin(origins = "http://localhost:3000")
 public class PackagesController {
     @Autowired
     JwtUtil jwtUtil;
