@@ -5,7 +5,7 @@
 - Java 8 or higher
 - Postgres database
 
-### Running docker file
+### Running docker file for setup postgres
 Go to resource path and run with the command
 ```
 docker-compose up -d
